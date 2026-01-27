@@ -154,7 +154,7 @@ This repository includes example sketches demonstrating common embedded UI patte
   (Program / Up / Down)
 
 - Four-button menu  
-  (Program / Back / Up / Down)
+  (Program / Select / Up / Down)
 
 The examples are written as teaching tools:
 

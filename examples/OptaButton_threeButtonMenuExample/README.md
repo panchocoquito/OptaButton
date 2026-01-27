@@ -12,10 +12,10 @@ The sketch prints everything to Serial so you can see what’s happening.
 
 ## What you should see
 
-- Holding PROGRAM toggles “program mode” on/off.
+- Long-holding PROGRAM toggles “program mode” on/off.
 - When program mode is ON:
   - Tapping PROGRAM cycles through settings (Volume, Brightness, Contrast).
-  - Holding UP/DOWN changes the selected setting.
+  - Tapping or holding UP/DOWN changes the selected setting.
   - Hold-repeat accelerates over time.
 - When you reach the min/max of a setting, Serial output is suppressed so it doesn’t spam.
 

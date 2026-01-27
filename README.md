@@ -1,25 +1,20 @@
 # OptaButton
 
 OptaButton is a small, focused Arduino library for handling physical pushbuttons
-correctly and predictably across:
+predictably across:
 
 - Classic Arduino boards (Uno, Mega, etc.)
 - Arduino Opta controllers (AFX00001 / AFX00002 / AFX00003)
 - Opta Digital Expansion modules (AFX00005 / AFX00006)
 
-It provides a clean, event-based API for one of the most fundamental (and most commonly
-mishandled) problems in embedded systems: buttons.
+It provides a clean, event-based API for buttons.
 
-This library is intentionally simple, explicit, and heavily commented.
-It is designed to be readable by beginners and reliable enough for industrial projects.
+It's intentionally simple, explicit, and heavily commented, designed to be readable 
+by beginners and reliable enough for industrial projects.
 
 ---
 
 ## Why OptaButton exists
-
-Reading a button is easy.
-
-Reading a button correctly is not.
 
 Real buttons:
 
@@ -28,9 +23,6 @@ Real buttons:
 - need long-press behavior
 - often need accelerated repeat
 - behave differently across hardware platforms
-
-OptaButton solves these problems once, cleanly, so your sketches can focus on behavior
-instead of timing logic.
 
 Instead of writing debounce code in loop(), you ask questions like:
 
@@ -99,32 +91,34 @@ set the invertedLogic constructor parameter to true.
 
 ## Basic usage
 
-    #include <OptaButton.h>
-    using DefLab::ButtonInputMode;
+```cpp
+#include <OptaButton.h>
+using DefLab::ButtonInputMode;
 
-    OptaButton myButton(
-      ButtonInputMode::GPIO,
-      2,
-      "My Button"
-    );
+OptaButton myButton(
+  ButtonInputMode::GPIO,
+  2,
+  "My Button"
+);
 
-    void setup() {
-      OPTA_BEGIN();      // required on Opta, safe no-op on AVR
-      myButton.begin();  // configure the input hardware
-    }
+void setup() {
+  OPTA_BEGIN();      // required on Opta, safe no-op on AVR
+  myButton.begin();  // configure the input hardware
+}
 
-    void loop() {
-      OPTA_UPDATE();     // required on Opta, safe no-op on AVR
-      myButton.update(); // update button state machine
+void loop() {
+  OPTA_UPDATE();     // required on Opta, safe no-op on AVR
+  myButton.update(); // update button state machine
 
-      if (myButton.isShortPressed()) {
-        // handle short press
-      }
+  if (myButton.isShortPressed()) {
+    // handle short press
+  }
 
-      if (myButton.isRepeating()) {
-        // handle accelerated hold-repeat
-      }
-    }
+  if (myButton.isRepeating()) {
+    // handle accelerated hold-repeat
+  }
+}
+```
 
 ---
 
@@ -146,7 +140,9 @@ This allows example sketches to remain portable without cluttering code with
 platform-specific preprocessor logic.
 
 For Opta digital expansion modules, OptaButton includes internal safeguards to avoid
-over-polling inputs while remaining compatible with earlier Opta core behavior.
+over-polling inputs while remaining compatible with earlier Opta core behavior, which
+required updating input states every time you polled the pins. As the Opta core library 
+evolves, we'll update here if necessary/helpful.
 
 ---
 
@@ -167,20 +163,6 @@ The examples are written as teaching tools:
 - designed to be read line-by-line
 
 They intentionally favor clarity over brevity.
-
----
-
-## Design philosophy
-
-OptaButton follows a few simple rules:
-
-- prefer clarity over cleverness
-- prefer events over polling
-- prefer explicit state over hidden behavior
-- write code that can be understood months later
-
-Buttons are a primitive.
-They should be boring, predictable, and trustworthy.
 
 ---
 

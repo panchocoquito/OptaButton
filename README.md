@@ -7,9 +7,9 @@ predictably across:
 - Arduino Opta controllers (AFX00001 / AFX00002 / AFX00003)
 - Opta Digital Expansion modules (AFX00005 / AFX00006)
 
-It provides a clean, event-based API for buttons.
+Provides a clean, event-based API for buttons.
 
-It's intentionally simple, explicit, and heavily commented, designed to be readable 
+Intentionally simple, explicit, and heavily commented, designed to be readable 
 by beginners and reliable enough for industrial projects.
 
 ---

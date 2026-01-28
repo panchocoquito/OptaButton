@@ -5,14 +5,16 @@ OptaButton is a small, focused Arduino library for handling physical pushbuttons
 - Classic Arduino boards (Uno, Mega, etc.)
 - Arduino Opta controllers (AFX00001 / AFX00002 / AFX00003)
 - Opta Digital Expansion modules (AFX00005 / AFX00006)
-
-It provides a clean, event-based API for buttons that's intentionally simple and heavily commented. 
+- 
+It provides a clean, event-based API for buttons that is intentionally simple and heavily commented. 
 
 ---
 
 ## Do we really need another button library?
 
-I love that Opta exists, and the analog expansion is especially coming in handy, but if you're coming from a purely Arduino IDE/Uno/Mega type environment you're in for some surprises. The Arduino Opta Blueprint library ([Arduino_Opta_Blueprint](https://github.com/arduino-libraries/Arduino_Opta_Blueprint)) has been updated recently—looking forward to good things—but when I was getting started with Opta, some of the examples on the official Opta tutorial weren't even working. I'm a noob, so some of that is likely on me, but my point is I had to spend a long time digging through the library folders for not-totally-clear-to-me comments and code in order to put this library together so someone in my shoes wouldn't have to next time.
+I love that Opta exists, and the analog expansion is especially coming in handy. But if you're coming from a purely Arduino IDE/Uno/Mega type environment you're in for some surprises. 
+
+The Arduino Opta Blueprint library ([Arduino_Opta_Blueprint](https://github.com/arduino-libraries/Arduino_Opta_Blueprint)) has been updated recently—looking forward to good things—but when I was getting started with Opta, some of the examples on the official Opta tutorial weren't even working. Opta was totally new at the time, so some of that is likely on me, but my point is I had to spend a long time digging through the library folders for not-totally-clear-to-me comments and code in order to put this library together so someone in my shoes wouldn't have to next time.
 
 Plus I found most button libraries weren't speaking my learning language when I first started out, so I'm hoping this one fills a hole.
 
@@ -29,7 +31,7 @@ Because buttons:
 - need hold-and-accelerated-repeat
 - behave differently across hardware platforms
 
-Learning how to handle those things in simple code is a great way to learn, but you don't want to have to do it every time. If you install the library, instead of writing debounce code in loop(), you ask questions like:
+Learning how to handle those things in simple code is a great way to learn, but you don't want to have to do it every time. If you install the library, instead of writing debounce code in ```cpploop(),``` you ask questions like:
 
 ```cpp
 thisButton.isShortPressed();
@@ -69,7 +71,7 @@ OptaButton supports multiple hardware input sources:
 | OPTA_CTL | Opta controller onboard digital inputs |
 | EXP_DIG | Opta digital expansion modules (AFX00005 / AFX00006) |
 
-There used to be an EXP_ANA mode, but the Opta Analog Expansion (AFX00007) is not recommended for pushbutton input. It's too slow and doesn't feel anything like the other three, so I got rid of it. The Analog Expansion is meant for other things—like outputting a 4-20mA current loop—which it does well.
+There used to be an EXP_ANA mode, but the Opta Analog Expansion (AFX00007) is not recommended for pushbutton input. It’s too slow and doesn’t behave like the other modes, so I removed it. The Analog Expansion is meant for other things—like outputting a 4-20mA current loop—which it does well.
 
 ---
 
@@ -114,7 +116,7 @@ You must define these parameters in order up to the one you want to modify/overr
 
 For example, if you just wanted to modify the debounce time to 35ms, you'd create an OptaButton with four parameters (everything up to and including debounceMs) and the compiler would complete the button by taking the defaults after that. 
 
-However, if you were only interested in modifying the long press time, you'd still have to enter the first six parameter arguments—including debounceMS and inverted—even if you liked the defaults. You can't just skip to the one you want, because the compiler won't know which one you're talking about. 
+However, if you were only interested in modifying the long press time, you'd still have to enter the first six parameter arguments—including debounceMs and inverted—even if you liked the defaults. You can't just skip to the one you want, because the compiler won't know which one you're talking about. 
 
 Here are the remaining parameters and their defaults:
 
@@ -182,7 +184,7 @@ platform-specific preprocessor logic.
 For Opta digital expansion modules, OptaButton includes internal safeguards to avoid
 over-polling inputs while remaining compatible with earlier Opta core behavior, which
 required updating input states every time you polled the pins. As the Opta core library 
-evolves, we'll update here if necessary/helpful.
+evolves, this section will be updated if necessary.
 
 ---
 
@@ -194,7 +196,7 @@ This repository includes example sketches demonstrating common embedded UI patte
   (Program / Up / Down)
 
 - Four-button menu  
-  (Program / Select / Up / Down)
+  (Program / Cycle / Up / Down)
 
 The examples are written as teaching tools:
 

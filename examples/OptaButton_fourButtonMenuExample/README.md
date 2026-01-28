@@ -188,7 +188,7 @@ OptaButton btnDown(       // name it btnDown
 
 ### 3. A simple state machine in `loop()`
 
-Each pass through `loop()` does four things, in order:
+Each pass through `loop()` do a few things, in order:
 
 - Update the Opta core (required on Opta, no-op on AVR)
 - Update each button’s internal state machine
@@ -197,7 +197,7 @@ Each pass through `loop()` does four things, in order:
    - check **CYCLE** to select a setting
    - check **UP / DOWN** to adjust the value
 
-The sketch exits early when not in program mode, which keeps the logic easy to follow.
+The sketch exits early when not in program mode.
 
 ---
 

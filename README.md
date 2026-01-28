@@ -183,7 +183,7 @@ On non-Opta boards, they compile out to no-ops.
 This allows example sketches to remain portable without cluttering code with
 platform-specific preprocessor logic.
 
-For Opta digital expansion modules, OptaButton includes internal safeguards to avoid
+TL/DR: For Opta digital expansion modules, OptaButton includes internal safeguards to avoid
 over-polling inputs while remaining compatible with earlier Opta core behavior, which
 required updating input states every time you polled the pins. As the Opta core library 
 evolves, this section will be updated if necessary.

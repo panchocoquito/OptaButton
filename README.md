@@ -12,25 +12,30 @@ It provides a clean, event-based API for buttons that's intentionally simple and
 
 ## Do we really need another button library?
 
-I love that Opta exists, and the analog expansion is especially coming in handy, but if you're coming from a purely Arduino IDE/Uno/Mega type environment you're in for some surprises. The Arduino Opta Blueprint library ([Arduino_Opta_Blueprint](https://github.com/arduino-libraries/Arduino_Opta_Blueprint)) has been updated recently, so hopefully it's better than it was, but when I was getting started with Opta, some of the examples on the official Opta tutorial weren't even working. I'm a noob myself, so some of that is likely on me, but my main point is I had to spend a long time digging through the library src folders for not-totally-clear-to-me comments and code in order to put this library together so someone in my shoes wouldn't have to next time.
+I love that Opta exists, and the analog expansion is especially coming in handy, but if you're coming from a purely Arduino IDE/Uno/Mega type environment you're in for some surprises. The Arduino Opta Blueprint library ([Arduino_Opta_Blueprint](https://github.com/arduino-libraries/Arduino_Opta_Blueprint)) has been updated recently—looking forward to good things—but when I was getting started with Opta, some of the examples on the official Opta tutorial weren't even working. I'm a noob, so some of that is likely on me, but my point is I had to spend a long time digging through the library folders for not-totally-clear-to-me comments and code in order to put this library together so someone in my shoes wouldn't have to next time.
 
-Also I found most button libraries weren't speaking my learning language when I first started out, so I'm hoping this one at least fills a hole.
+Plus I found most button libraries weren't speaking my learning language when I first started out, so I'm hoping this one fills a hole.
 
-Maybe this is your first button library... so... why are there button libraries? 
+## Maybe this is your first button library
+
+So... why are there button libraries?
 
 Because buttons:
 
 - bounce
 - get held down
+- get tapped real fast
 - need long-press behavior
-- often need accelerated repeat
+- need hold-and-accelerated-repeat
 - behave differently across hardware platforms
 
-Learning how to keep track of those things in simple code is a great learning tool, but you don't want to have to do it every time. If you install the library, instead of writing debounce code in loop(), you ask questions like:
+Learning how to handle those things in simple code is a great way to learn, but you don't want to have to do it every time. If you install the library, instead of writing debounce code in loop(), you ask questions like:
 
-    btn.isShortPressed();
-    btn.isLongPressed();
-    btn.isRepeating();
+```cpp
+thisButton.isShortPressed();
+thatButton.isLongPressed();
+thisOtherButton.isRepeating();
+```
 
 And those questions mean the same thing on both AVR and Opta.
 
@@ -56,7 +61,7 @@ And those questions mean the same thing on both AVR and Opta.
 
 ## Supported input modes
 
-OptaButton supports multiple hardware input sources through a single API.
+OptaButton supports multiple hardware input sources:
 
 | Input mode | Description |
 |-----------|-------------|
@@ -64,7 +69,7 @@ OptaButton supports multiple hardware input sources through a single API.
 | OPTA_CTL | Opta controller onboard digital inputs |
 | EXP_DIG | Opta digital expansion modules (AFX00005 / AFX00006) |
 
-The Opta Analog Expansion (AFX00007) is not recommended for pushbutton input.
+There used to be an EXP_ANA mode, but the Opta Analog Expansion (AFX00007) is not recommended for pushbutton input. It's too slow and doesn't feel anything like the other three, so I got rid of it. The Analog Expansion is meant for other things—like outputting a 4-20mA current loop—which it does well.
 
 ---
 

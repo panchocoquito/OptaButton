@@ -1,0 +1,22 @@
+# Datatypes (KEYWORD1)
+OptaButton	KEYWORD1
+
+# Enums (KEYWORD1)
+ButtonInputMode	KEYWORD1
+
+# Methods / Functions (KEYWORD2)
+begin	KEYWORD2
+update	KEYWORD2
+isShortPressed	KEYWORD2
+isLongPressed	KEYWORD2
+isLongReleased	KEYWORD2
+isReleased	KEYWORD2
+isRepeating	KEYWORD2
+getLabel	KEYWORD2
+
+# Constants / Macros (LITERAL1)
+OPTA_BEGIN	LITERAL1
+OPTA_UPDATE	LITERAL1
+GPIO	LITERAL1
+OPTA_CTL	LITERAL1
+EXP_DIG	LITERAL1

@@ -31,7 +31,7 @@ Because buttons:
 - need hold-and-accelerated-repeat
 - behave differently across hardware platforms
 
-Learning how to handle those things in simple code is a great way to learn, but you don't want to have to do it every time. If you install the library, instead of writing debounce code in ```cpploop(),``` you ask questions like:
+Learning how to handle those things in simple code is a great way to learn, but you don't want to have to do it every time. If you install the library, instead of writing debounce code in ```loop(),``` you ask questions like:
 
 ```cpp
 thisButton.isShortPressed();

@@ -69,7 +69,7 @@ enum Settings {        // a plain enumumeration for settings (used like an int i
   NUM_SETTINGS         // 3 = total count (keep this last; it sizes the arrays)
 };
 
-// A name table for the settings (index with currentSetting)
+// Write a name table for the settings (index with currentSetting)
 const char* settingNames[NUM_SETTINGS] = {
   // array length matches NUM_SETTINGS
   "Volume",      // name for SETTING_VOLUME (index 0)
@@ -173,7 +173,8 @@ void setup() {
 // ---------- LOOP ----------
 
 void loop() {
-  // Update the Opta controller core (safe no-op on AVR; important on Opta for expansions)
+  // 1] Update the Opta controller core (safe no-op on AVR; important on Opta for expansions)
+  
   OPTA_UPDATE();  // expands to OptaController.update() on Opta; compiles out elsewhere
 
   // Update button state machines (debounce, edge detection, long press, repeat timing)
@@ -181,7 +182,7 @@ void loop() {
   btnUp.update();       // refresh UP events for this loop
   btnDown.update();     // refresh DOWN events for this loop
 
-  // 1] Check for PROGRAM long-press to toggle program mode
+  // 2] Check for PROGRAM long-press to toggle program mode
 
   if (btnProgram.isLongPressed()) {                        // true only on the moment we cross the long-press threshold
     programMode = !programMode;                            // flip edit mode on/off
@@ -192,19 +193,19 @@ void loop() {
   // If we are not in program mode, stop here (we still updated buttons above, so mode can be entered anytime)
   if (!programMode) return;  // exit loop early; nothing else should change when not editing
 
-  // 2] Check for PROGRAM short-press to select which setting to edit
+  // 3] Check for PROGRAM short-press to select which setting to edit
 
   if (btnProgram.isShortPressed()) {                                 // true only on the press edge (short press event)
     currentSetting = Settings((currentSetting + 1) % NUM_SETTINGS);  // wrap to 0 after last setting
     Serial.print("Selected: ");                                      // label
     Serial.println(settingNames[currentSetting]);                    // print the name by indexing the name array
 
-    // Reset boundary suppression flags for the newly selected setting
-    printedAtMin[currentSetting] = false;  // allow "min reached" message to print again for this setting
-    printedAtMax[currentSetting] = false;  // allow "max reached" message to print again for this setting
+    // Reset boundary print suppression for the newly selected setting
+    printedAtMin[currentSetting] = false;  // allow printing again if this setting is at MIN
+    printedAtMax[currentSetting] = false;  // allow printing again if this setting is at MAX
   }
 
-  // 3] Check for UP button to increase the selected value with repeat
+  // 4] Check for UP button to increase the selected value with repeat
 
   if (btnUp.isShortPressed() || btnUp.isRepeating()) {  // either a tap OR an auto-repeat tick while holding
     settingValues[currentSetting]++;                    // increase the current setting by 1
@@ -236,7 +237,7 @@ void loop() {
     }
   }
 
-  // 4] Check for DOWN button to decrease the selected value with repeat
+  // 5] Check for DOWN button to decrease the selected value with repeat
 
   if (btnDown.isShortPressed() || btnDown.isRepeating()) {  // either a tap OR an auto-repeat tick while holding
     settingValues[currentSetting]--;                        // decrease the current setting by 1

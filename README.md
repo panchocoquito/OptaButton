@@ -39,7 +39,9 @@ thatButton.isLongPressed();
 thisOtherButton.isRepeating();
 ```
 
-And those questions mean the same thing on both AVR and Opta.
+And those questions mean the same thing on both AVR and Opta, so you can just use this out of the box.
+
+And if you're curious about how those things might be implemented, this library has plain-english comments on every line.
 
 ---
 

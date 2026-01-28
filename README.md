@@ -5,7 +5,7 @@ OptaButton is a small, focused Arduino library for handling physical pushbuttons
 - Classic Arduino boards (Uno, Mega, etc.)
 - Arduino Opta controllers (AFX00001 / AFX00002 / AFX00003)
 - Opta Digital Expansion modules (AFX00005 / AFX00006)
-- 
+
 It provides a clean, event-based API for buttons that is intentionally simple and heavily commented. 
 
 ---

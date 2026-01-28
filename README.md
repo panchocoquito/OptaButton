@@ -26,19 +26,19 @@ Because buttons:
 - often need accelerated repeat
 - behave differently across hardware platforms
 
-Instead of writing debounce code in loop(), you ask questions like:
+Learning how to keep track of those things in simple code is a great learning tool, but you don't want to have to do it every time. If you install the library, instead of writing debounce code in loop(), you ask questions like:
 
     btn.isShortPressed();
     btn.isLongPressed();
     btn.isRepeating();
 
-Those questions mean the same thing on AVR and on Opta.
+And those questions mean the same thing on both AVR and Opta.
 
 ---
 
 ## Features
 
-- Edge-based button handling (no level polling in user code)
+- Edge-based button handling
 - Debounce handled internally
 - Short press detection
 - Long press detection
@@ -87,6 +87,34 @@ The Opta Analog Expansion (AFX00007) is not recommended for pushbutton input.
 - HIGH = pressed
 
 If your wiring causes the pressed state to be inverted relative to the default, set the invertedLogic constructor parameter to true.
+
+---
+
+## OptaButton constructor parameters
+
+### Required parameters
+
+When you create an OptaButton, you have to include the first three parameter arguments:
+
+DefLab::ButtonInputMode mode,  // which input hardware to use
+uint8_t inputPin,              // pin number or channel index
+const char* label,             // human-readable name for debugging
+
+### Optional parameters
+
+The remaining six default to values I've found useful in my system, which uses a variety of momentary pushbuttons to both AVR and Opta.
+You must define these parameters in order up to the one you want to modify/override, but if you want to use the defaults after that you don't need to pass them.
+
+For example, if you just wanted to modify the debounce time to 35ms, you'd create an OptaButton with four parameters (everything up to and including debounceMs) and the compiler would complete the button by taking the defaults after that. 
+
+However, if you were only interested in modifying the long press time, you'd have to enter six parameter arguments. You can't just skip to the one you want, because the compiler won't know which one you're talking about otherwise.
+
+uint16_t debounceMs = 20,      // ms to ignore bounce after edge
+bool inverted = false,         // true if LOW=pressed instead of HIGH
+uint16_t longPressMs = 800,    // ms to hold before long press fires
+uint16_t repeatStartMs = 100,  // initial delay between repeats
+uint16_t repeatMinMs = 8,      // fastest delay when accelerating
+uint8_t accelRate = 100        // how much to speed up per second
 
 ---
 

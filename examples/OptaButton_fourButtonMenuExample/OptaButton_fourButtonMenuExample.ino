@@ -147,7 +147,8 @@ void setup() {
 // ---------- LOOP ----------
 
 void loop() {
-  // Update controller and buttons each iteration
+  // 1] Update controller and buttons each iteration
+
   OPTA_UPDATE();  // AVR compiler will ignore this; see .h file if you're curious
 
   // Update button state machines (debounce, edge detection, long press, repeat timing)
@@ -156,7 +157,7 @@ void loop() {
   btnUp.update();       // refresh UP events for this loop
   btnDown.update();     // refresh DOWN events for this loop
 
-  // 1] Check for PROGRAM long-press to toggle program mode
+  // 2] Check for PROGRAM long-press to toggle program mode
 
   if (btnProgram.isLongPressed()) {                        // true only on the moment we cross the long-press threshold
     programMode = !programMode;                            // flip edit mode on/off
@@ -167,7 +168,7 @@ void loop() {
   // If we are not in program mode, stop here (we still updated buttons above, so mode can be entered anytime)
   if (!programMode) return;  // exit loop early; nothing else should change when not editing
 
-  // 2] Check for CYCLE short-press to select which setting to edit
+  // 3] Check for CYCLE short-press to select which setting to edit
 
   if (btnCycle.isShortPressed()) {                                   // true only on the press edge (short press event)
     currentSetting = Settings((currentSetting + 1) % NUM_SETTINGS);  // wrap to 0 after last setting
@@ -179,7 +180,7 @@ void loop() {
     printedAtMax[currentSetting] = false;  // allow printing again if this setting is at MAX
   }
 
-  // 3] Check for UP button to increase the selected value with repeat
+  // 4] Check for UP button to increase the selected value with repeat
 
   if (btnUp.isShortPressed() || btnUp.isRepeating()) {  // either a tap OR an auto-repeat tick while holding
     settingValues[currentSetting]++;                    // increase the current setting by 1
@@ -211,7 +212,7 @@ void loop() {
     }
   }
 
-  // 4] Check for DOWN button to decrease the selected value with repeat
+  // 5] Check for DOWN button to decrease the selected value with repeat
 
   if (btnDown.isShortPressed() || btnDown.isRepeating()) {  // either a tap OR an auto-repeat tick while holding
     settingValues[currentSetting]--;                        // decrease the current setting by 1

@@ -1,22 +1,24 @@
 # OptaButton
 
-OptaButton is a small, focused Arduino library for handling physical pushbuttons
-predictably across:
+OptaButton is a small, focused Arduino library for handling physical pushbuttons predictably across:
 
 - Classic Arduino boards (Uno, Mega, etc.)
 - Arduino Opta controllers (AFX00001 / AFX00002 / AFX00003)
 - Opta Digital Expansion modules (AFX00005 / AFX00006)
 
-Provides a clean, event-based API for buttons.
-
-Intentionally simple, explicit, and heavily commented, designed to be readable 
-by beginners and reliable enough for industrial projects.
+It provides a clean, event-based API for buttons that's intentionally simple and heavily commented. 
 
 ---
 
-## Why OptaButton exists
+## Do we really need another button library?
 
-Real buttons:
+I love that Opta exists, and the analog expansion is especially coming in handy, but if you're coming from a purely Arduino IDE/Uno/Mega type environment you're in for some surprises. The Arduino Opta Blueprint library ([Arduino_Opta_Blueprint](https://github.com/arduino-libraries/Arduino_Opta_Blueprint)) has been updated recently, so hopefully it's better than it was, but when I was getting started with Opta, some of the examples on the official Opta tutorial weren't even working. I'm a noob myself, so some of that is likely on me, but my main point is I had to spend a long time digging through the library src folders for not-totally-clear-to-me comments and code in order to put this library together so someone in my shoes wouldn't have to next time.
+
+Also I found most button libraries weren't speaking my learning language when I first started out, so I'm hoping this one at least fills a hole.
+
+Maybe this is your first button library... so... why are there button libraries? 
+
+Because buttons:
 
 - bounce
 - get held down
@@ -84,8 +86,7 @@ The Opta Analog Expansion (AFX00007) is not recommended for pushbutton input.
 - Wire button between the DI channel and +24 V
 - HIGH = pressed
 
-If your wiring causes the pressed state to be inverted relative to the default,
-set the invertedLogic constructor parameter to true.
+If your wiring causes the pressed state to be inverted relative to the default, set the invertedLogic constructor parameter to true.
 
 ---
 

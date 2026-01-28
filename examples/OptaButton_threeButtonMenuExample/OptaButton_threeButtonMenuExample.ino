@@ -56,7 +56,7 @@
     • Opta Analog Expansion AFX00007 not recommended for reliable pushbutton input
 */
 
-#include "OptaButton.h"         // include the OptaButton library header (brings in Arduino core too)
+#include <OptaButton.h>         // OptaButton library: IDE-installed dependency, brings in Arduino core too
 using DefLab::ButtonInputMode;  // alias the shared enum so we can write ButtonInputMode::GPIO, etc
 
 // ---------- Menu Settings Model ----------

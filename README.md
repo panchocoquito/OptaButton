@@ -96,9 +96,11 @@ If your wiring causes the pressed state to be inverted relative to the default, 
 
 When you create an OptaButton, you have to include the first three parameter arguments:
 
+```cpp
 DefLab::ButtonInputMode mode,  // which input hardware to use
 uint8_t inputPin,              // pin number or channel index
 const char* label,             // human-readable name for debugging
+```
 
 ### Optional parameters
 
@@ -109,12 +111,14 @@ For example, if you just wanted to modify the debounce time to 35ms, you'd creat
 
 However, if you were only interested in modifying the long press time, you'd have to enter six parameter arguments. You can't just skip to the one you want, because the compiler won't know which one you're talking about otherwise.
 
+```cpp
 uint16_t debounceMs = 20,      // ms to ignore bounce after edge
 bool inverted = false,         // true if LOW=pressed instead of HIGH
 uint16_t longPressMs = 800,    // ms to hold before long press fires
 uint16_t repeatStartMs = 100,  // initial delay between repeats
 uint16_t repeatMinMs = 8,      // fastest delay when accelerating
 uint8_t accelRate = 100        // how much to speed up per second
+```
 
 ---
 

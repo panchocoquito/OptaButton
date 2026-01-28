@@ -44,7 +44,7 @@ Serial output is intentionally suppressed when a value is already at its minimum
 
 ---
 
-## Button roles (at a glance)
+## Button roles
 
 | Button  | Action |
 |--------|--------|

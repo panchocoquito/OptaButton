@@ -114,7 +114,9 @@ You must define these parameters in order up to the one you want to modify/overr
 
 For example, if you just wanted to modify the debounce time to 35ms, you'd create an OptaButton with four parameters (everything up to and including debounceMs) and the compiler would complete the button by taking the defaults after that. 
 
-However, if you were only interested in modifying the long press time, you'd have to enter six parameter arguments. You can't just skip to the one you want, because the compiler won't know which one you're talking about.
+However, if you were only interested in modifying the long press time, you'd still have to enter the first six parameter arguments—including debounceMS and inverted, even if you liked the defaults. You can't just skip to the one you want, because the compiler won't know which one you're talking about. 
+
+Here are the remaining parameters and their defaults:
 
 ```cpp
 uint16_t debounceMs = 20,      // ms to ignore bounce after edge

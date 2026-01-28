@@ -14,7 +14,7 @@ It provides a clean, event-based API for buttons that is intentionally simple an
 
 I love that Opta exists, and the analog expansion is especially coming in handy. But if you're coming from a purely Arduino IDE/Uno/Mega type environment you're in for some surprises. 
 
-The Arduino Opta Blueprint library ([Arduino_Opta_Blueprint](https://github.com/arduino-libraries/Arduino_Opta_Blueprint)) has been updated recently—looking forward to good things—but when I was getting started with Opta, some of the examples on the official Opta tutorial weren't even working. Opta was totally new at the time, so some of that is likely on me, but my point is I had to spend a long time digging through the library folders for not-totally-clear-to-me comments and code in order to put this library together so someone in my shoes wouldn't have to next time.
+The Arduino Opta Blueprint library ([Arduino_Opta_Blueprint](https://github.com/arduino-libraries/Arduino_Opta_Blueprint)) has been updated recently—looking forward to good things—but when I was getting started with Opta, some of the examples on the official Opta tutorial weren't even working. Some of that is likely on me, but regardless I had to spend a long time digging through the library folders for not-totally-clear-to-me comments and code in order to put this library together so someone in my shoes wouldn't have to next time.
 
 Plus I found most button libraries weren't speaking my learning language when I first started out, so I'm hoping this one fills a hole.
 

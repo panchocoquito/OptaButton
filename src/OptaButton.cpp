@@ -165,11 +165,11 @@ bool OptaButton::readInput() {
 
       // Loop through mechanical and solid‑state expansion
       for (int i = 0; i < OPTA_CONTROLLER_MAX_EXPANSION_NUM; i++) {
-        Opta::DigitalMechExpansion mechExp = Opta::OptaController.getExpansion(i);
-        Opta::DigitalStSolidExpansion solidExp = Opta::OptaController.getExpansion(i);
+        Opta::DigitalMechExpansion mechExp = OptaController.getExpansion(i);
+        Opta::DigitalStSolidExpansion solidExp = OptaController.getExpansion(i);
 
         if (mechExp) {  // if mechanical expansion present
-          if (g_optaExpRefreshToken != lastRefreshToken) {
+          if (g_optaExpRefreshToken != lastExpRefreshToken) {
             mechExp.updateDigitalInputs();  // refresh its input state once per loop
             lastExpRefreshToken = g_optaExpRefreshToken;
           }
@@ -177,7 +177,7 @@ bool OptaButton::readInput() {
           break;                               // stop after first valid expansion match
         }
         if (solidExp) {  // if solid-state expansion present
-          if (g_optaExpRefreshToken != lastRefreshToken) {
+          if (g_optaExpRefreshToken != lastExpRefreshToken) {
             solidExp.updateDigitalInputs();  // refresh its input state once per loop
             lastExpRefreshToken = g_optaExpRefreshToken;
           }

@@ -65,8 +65,8 @@
 #endif
 
 #if OPTA == 1
-#define OPTA_BEGIN() Opta::OptaController.begin()
-#define OPTA_UPDATE() Opta::OptaController.update()
+#define OPTA_BEGIN() OptaController.begin()
+#define OPTA_UPDATE() OptaController.update()
 #else
 // Stubs on non‑Opta builds
 #define OPTA_BEGIN() ((void)0)
